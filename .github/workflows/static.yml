@@ -7,18 +7,21 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-latest] # Tes di ubuntu-22.04 dan versi terbaru
+    runs-on: ${{ matrix.os }}
 
     steps:
     # 1. Checkout kode
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2. Install Node.js
+    # 2. Setup Node.js
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18 # Pastikan versi sesuai kebutuhan Anda
+        node-version: 18 # Pastikan versi Node.js sesuai kebutuhan proyek
 
     # 3. Install dependencies
     - name: Install dependencies
@@ -33,4 +36,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist # Folder hasil build
+        publish_dir: ./dist # Ganti dengan folder hasil build Anda
