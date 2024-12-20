@@ -63,7 +63,7 @@ jobs:
 
       # Step 7: Upload build output as an artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
           # Ensure the path matches the actual output directory of the build
           path: './build'
