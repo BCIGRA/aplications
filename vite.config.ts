@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/mini-app', // Base URL untuk GitHub Pages
+  base: '/mini-app/', // Base URL untuk GitHub Pages
   plugins: [
     react(), // Plugin untuk React
     tsconfigPaths(), // Memungkinkan penggunaan compilerOptions.paths dari tsconfig.json
