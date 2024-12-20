@@ -5,21 +5,17 @@ import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/mini-app',
+  base: '/mini-app', // Base URL untuk GitHub Pages
   plugins: [
-    // Allows using React dev server along with building a React application with Vite.
-    // https://npmjs.com/package/@vitejs/plugin-react-swc
-    react(),
-    // Allows using the compilerOptions.paths property in tsconfig.json.
-    // https://www.npmjs.com/package/vite-tsconfig-paths
-    tsconfigPaths(),
-    // Allows using self-signed certificates to run the dev server using HTTPS.
-    // https://www.npmjs.com/package/@vitejs/plugin-basic-ssl
-    // basicSsl(),
+    react(), // Plugin untuk React
+    tsconfigPaths(), // Memungkinkan penggunaan compilerOptions.paths dari tsconfig.json
+    // basicSsl(), // Aktifkan untuk HTTPS di dev server, jika diperlukan
   ],
-  publicDir: './public',
+  publicDir: './public', // Direktori publik untuk aset statis
+  build: {
+    outDir: 'build', // Ubah folder output menjadi 'build'
+  },
   server: {
-    // Exposes your dev server and makes it accessible for the devices in the same network.
-    host: true,
+    host: true, // Membuka server pengembangan untuk perangkat di jaringan yang sama
   },
 });
