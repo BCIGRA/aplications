@@ -47,18 +47,28 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      # Step 5: Configure GitHub Pages output
+      # Step 5: Verify that build directory exists
+      - name: Verify build directory exists
+        run: |
+          if [ -d "./build" ]; then
+            echo "Build directory exists"
+          else
+            echo "Build directory not found"
+            exit 1
+          fi
+
+      # Step 6: Configure GitHub Pages output
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      # Step 6: Upload build output as an artifact
+      # Step 7: Upload build output as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Update this to the build output directory of your project
+          # Ensure the path matches the actual output directory of the build
           path: './build'
-
-      # Step 7: Deploy to GitHub Pages
+          
+      # Step 8: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
