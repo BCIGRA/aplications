@@ -1,15 +1,17 @@
+import resolve from '@rollup/plugin-node-resolve';
 import scss from 'rollup-plugin-scss';
 
 export default {
-  input: 'src/index.tsx', // Ganti dengan file entry point proyek Anda
+  input: 'src/index.tsx',
   output: {
-    file: 'dist/bundle.js', // Output bundle
-    format: 'esm',           // Format output
+    file: 'dist/bundle.js',
+    format: 'esm',
   },
   plugins: [
+    resolve(),
     scss({
-      output: 'dist/styles.css', // Output file CSS
+      output: 'dist/styles.css',
     }),
-    // Plugin lain yang digunakan di proyek Anda
+    // Plugin lainnya
   ],
 };
