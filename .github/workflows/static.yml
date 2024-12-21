@@ -1,27 +1,20 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ['master']
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -43,18 +36,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Step 6: Configure GitHub Pages output
+      # Step 4: Build the project
+      - name: Build the project
+        run: npm run build
+
+      # Step 5: Configure GitHub Pages output
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      # Step 7: Upload build output as an artifact
+      # Step 6: Upload build output as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Ensure the path matches the actual output directory of the build
-          path: '.'
-          
-      # Step 8: Deploy to GitHub Pages
+          path: './build'  # Make sure this matches your actual build output folder
+
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
