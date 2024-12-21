@@ -1,0 +1,17 @@
+{
+    "roots": ["<rootDir>"],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|scss|svg|png)$": "identity-obj-proxy"
+    },
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "testEnvironment": "jsdom",
+    "collectCoverage": false,
+    "collectCoverageFrom": ["src/**/*.tsx"],
+    "coverageDirectory": "target/reports/coverage",
+    "coverageReporters": ["html", "lcov", "cobertura", "text-summary"]
+  }
+  
