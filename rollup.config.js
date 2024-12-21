@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
-import scss from 'rollup-plugin-scss';
+import alias from '@rollup/plugin-alias';
+import { resolve } from 'path';
 
 export default {
   input: 'src/index.tsx',
@@ -9,8 +10,10 @@ export default {
   },
   plugins: [
     resolve(),
-    scss({
-      output: 'dist/styles.css',
+    alias({
+      entries: [
+        { find: '@assets', replacement: resolve(__dirname, 'src/assets') },
+      ],
     }),
     // Plugin lainnya
   ],
