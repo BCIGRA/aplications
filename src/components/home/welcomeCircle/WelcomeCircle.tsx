@@ -1,5 +1,5 @@
 // Mengimpor SCSS dari file relatif yang benar
-import '../../../assets/stylesheets/home/welcomeCircle.scss';
+import '@assets/stylesheets/home/welcomeCircle.scss';
 import Badge from '@mui/material/Badge';
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import CloseIcon from '@mui/icons-material/Close';
